@@ -34,3 +34,16 @@ COMMENTS  -->
   displayGlobalVar();
   echo "This is from outside a function $globalVar";
   ?>
+
+<?php 
+  echo "<br/>";
+  function staticVar(){
+    static $num = 97;
+    $num++;
+    echo "my number is : ".$num."\n";
+  }
+
+  staticVar();
+  staticVar();
+  staticVar();
+?>
