@@ -20,3 +20,17 @@ COMMENTS  -->
   myFunc();
   // echo "this line wont be executed because of local variable $name"
 ?>
+
+<?php 
+  $globalVar = "this is global variable";
+  echo "<br/>";
+
+  function displayGlobalVar(){
+    // DECLARE VARIABLE AS A GLOBAL VARIABLE FOR USING THE VARIABLE
+    global $globalVar;
+    echo "This is from inside a function $globalVar\n";
+  }
+  
+  displayGlobalVar();
+  echo "This is from outside a function $globalVar";
+  ?>
