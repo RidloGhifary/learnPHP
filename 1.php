@@ -47,3 +47,30 @@ COMMENTS  -->
   staticVar();
   staticVar();
 ?>
+
+<?php
+ echo "<br/>";
+
+  $myNum = "ridlo";
+
+  if($myNum >= 10 && is_numeric($myNum)){
+    echo "my number is more than 10";
+  } else if($muNum <= 10 && is_numeric($myNum)) {
+    echo "my number is less than 10";
+  }else {
+    echo "is not a number";
+  }
+
+  echo "<br/>";
+
+  switch ($myNum){
+    case ($myNum >= 10 && is_numeric($myNum)):
+      echo "my number is more than 10";
+      break;
+    case ($myNum <= 10 && is_numeric($myNum)):
+      echo "my number is less than 10";
+      break;
+    default:
+      echo "is not a number";
+  }
+?>
