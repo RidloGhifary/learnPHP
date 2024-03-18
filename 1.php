@@ -74,3 +74,21 @@ COMMENTS  -->
       echo "is not a number";
   }
 ?>
+
+<?php
+  echo "<br/>";
+  
+  for($i = 1; $i <= 10; $i++) {
+    echo $i;
+    echo "<br/>";
+  };
+  
+  echo "<br/>";
+
+  $i = 1;
+  while($i < 7) {
+    echo $i;
+    echo "<br/>";
+    $i++;
+  }
+?>
