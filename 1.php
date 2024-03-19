@@ -106,3 +106,29 @@ COMMENTS  -->
   $marks = array("Tony"=> 96, "Edwin"=>100);
   echo $marks["Edwin"];
 ?>
+
+<?php 
+ echo "<br/>";
+ 
+ $students = array(
+   array(1, "Tony", 96),
+   array(2, "Edwin", 97),
+   array(3, "John", 98)
+ );
+ 
+ echo $students[2][2];
+ echo "<br/>";
+
+ $cars = array (
+  array("Volvo",22,18),
+  array("BMW",15,13),
+  array("Saab",5,2),
+  array("Land Rover",17,15)
+);
+
+echo $cars[0][0].": In stock: ".$cars[0][1].", sold: ".$cars[0][2].".<br>";
+echo $cars[1][0].": In stock: ".$cars[1][1].", sold: ".$cars[1][2].".<br>";
+echo $cars[2][0].": In stock: ".$cars[2][1].", sold: ".$cars[2][2].".<br>";
+echo $cars[3][0].": In stock: ".$cars[3][1].", sold: ".$cars[3][2].".<br>";
+
+?>
