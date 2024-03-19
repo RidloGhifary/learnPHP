@@ -94,11 +94,15 @@ COMMENTS  -->
 ?>
 
 <?php
-echo "<br/>";
+  echo "<br/>";
 
-$datas = array("first", "second","third");
-for($i = 0 ; $i < count($datas); $i++) {
-  echo $datas[$i]."\n";
-}
+  $datas = array("first", "second","third");
+  for($i = 0 ; $i < count($datas); $i++) {
+    echo $datas[$i]."\n";
+  }
 
+  echo "<br/>";
+
+  $marks = array("Tony"=> 96, "Edwin"=>100);
+  echo $marks["Edwin"];
 ?>
