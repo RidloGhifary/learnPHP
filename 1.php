@@ -92,3 +92,13 @@ COMMENTS  -->
     $i++;
   }
 ?>
+
+<?php
+echo "<br/>";
+
+$datas = array("first", "second","third");
+for($i = 0 ; $i < count($datas); $i++) {
+  echo $datas[$i]."\n";
+}
+
+?>
