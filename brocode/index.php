@@ -1,18 +1,36 @@
 <?php 
+  session_start();
 
-  setcookie("fav_food","pizza",time() + (86400 * 2), "/");
-  setcookie("fav_drink","coca cola",time() + (86400 * 3), "/");
-  setcookie("fav_game","valorant",time() - 0, "/");
-
-  
-  foreach($_COOKIE as $key => $value){
-    echo "{$key} = {$value} <br/>";
-  }
-
-  if(isset($_COOKIE['fav_game'])){
-    echo "I love playing {$$_COOKIE['fav_game']}";
-  } else{
-    echo "I don`t like playing game";
+  if(isset($_POST["login"])){
+    if(!empty($_POST['username'])&&!empty($_POST['password'])){
+      $_SESSION['username'] = $_POST['username'];
+      $_SESSION['password'] = $_POST['password'];
+      
+      header("Location: home.php");
+      exit();
+    } else{
+      echo "missing username/password";
+    }
+  } else {
+    echo "<p>please login buddy</p>";
   }
 ?>
+
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+    </head>
+    <body>
+      <form action="index.php" method="post">
+        username : <br/>
+        <input type="text" name="username"/><br/>
+        password : <br/>
+        <input type="password" name="password"/><br/>
+        <input type="submit" name="login" value="Login">
+      </form>
+  </body>
+</html>
 
