@@ -7,9 +7,9 @@
 </head>
 <body>
   <form action="index.php" method="post">
-   <input type="radio" name="credit-card" value="Visa">Visa<br/>
-   <input type="radio" name="credit-card" value="Mastercard">Mastercard<br/>
-   <input type="radio" name="credit-card" value="American Express">American Express<br/>
+   <input type="checkbox" name="foods[]" value="Pizza">Pizza<br/>
+   <input type="checkbox" name="foods[]" value="Taco">Taco<br/>
+   <input type="checkbox" name="foods[]" value="Burger">Burger<br/>
    <input type="submit" name="submit" value="Submit">
   </form>
 </body>
@@ -17,24 +17,13 @@
 
 <?php 
   if(isset($_POST['submit'])){
-    $credit_card = null;
-
-    if(isset($_POST['credit-card'])){
-      $credit_card = $_POST['credit-card'];
-    }
-
-    switch($credit_card){
-      case "Visa":
-        echo "You selected Visa";
-        break;
-      case "Mastercard":
-        echo "You selected Mastercard";
-        break;
-      case "American Express":
-        echo "You selected American Express";
-        break;
-      default:
-      echo "Please make a selection";
-    }
+   if(isset($_POST['foods']) && !empty($_POST["foods"])){
+    $foods = $_POST['foods'];
+    foreach($foods as $food){
+      echo $food. "<br/>";
+   }
+  }else {
+    echo "select at least one";
   }
+}
 ?>
