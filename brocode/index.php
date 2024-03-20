@@ -7,31 +7,34 @@
 </head>
 <body>
   <form action="index.php" method="post">
-    <label for="x">x:</label>
-    <input type="text" name="x" id="x">
-    <label for="y">y:</label>
-    <input type="text" name="y" id="y">
-    <label for="z">z:</label>
-    <input type="text" name="z" id="z">
-    <input type="submit" value="Total">
+   <input type="radio" name="credit-card" value="Visa">Visa<br/>
+   <input type="radio" name="credit-card" value="Mastercard">Mastercard<br/>
+   <input type="radio" name="credit-card" value="American Express">American Express<br/>
+   <input type="submit" name="submit" value="Submit">
   </form>
 </body>
 </html>
 
 <?php 
-  $x = $_POST["x"];
-  $y = $_POST["y"];
-  $z = $_POST["z"];
+  if(isset($_POST['submit'])){
+    $credit_card = null;
 
-  // $total = abs($x);
-  // $total = round($x);
-  // $total = floor($x);
-  // $total = ceil($x);
-  // $total = pow($x, $y);
-  // $total = sqrt($x);
-  // $total = max($x, $y, $z);
-  // $total = min($x, $y, $z);
-  $total = rand();
+    if(isset($_POST['credit-card'])){
+      $credit_card = $_POST['credit-card'];
+    }
 
-  echo $total;
+    switch($credit_card){
+      case "Visa":
+        echo "You selected Visa";
+        break;
+      case "Mastercard":
+        echo "You selected Mastercard";
+        break;
+      case "American Express":
+        echo "You selected American Express";
+        break;
+      default:
+      echo "Please make a selection";
+    }
+  }
 ?>
