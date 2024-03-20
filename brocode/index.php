@@ -9,6 +9,7 @@
   <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
     username :<br/>
     <input type="text" name="username">
+    <input type="password" name="password">
     <input type="submit" value="submit">
   </form>
 </body>
@@ -17,7 +18,16 @@
 <?php 
 
   if($_SERVER['REQUEST_METHOD'] === "POST") {
-    echo $_POST['username'];
+
+    $pass = "pizza123";
+    $pass_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+    if(password_verify($pass, $pass_hash)) {
+      echo "username : ".$_POST['username']."<br/>";
+      echo "password : ".$pass_hash."<br/>";
+    } else {
+      echo "password is incorrect";
+    }
   }
 
 ?>
