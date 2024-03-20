@@ -7,23 +7,24 @@
 </head>
 <body>
   <form action="index.php" method="post">
-   <input type="checkbox" name="foods[]" value="Pizza">Pizza<br/>
-   <input type="checkbox" name="foods[]" value="Taco">Taco<br/>
-   <input type="checkbox" name="foods[]" value="Burger">Burger<br/>
-   <input type="submit" name="submit" value="Submit">
+   username<input type="text" name="username"><br/>
+   age<input type="text" name="age"><br/>
+   email<input type="text" name="email"><br/>
+   <input type="submit" name="login" value="login">
   </form>
+  <?php 
+    if(isset($_POST['login'])){
+      $username = filter_var($_POST['username'], FILTER_SANITIZE_SPECIAL_CHARS);
+      $age = filter_input(INPUT_POST, "age", FILTER_SANITIZE_NUMBER_INT);
+      $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+      echo "<p>{$username}</p>" . "\n";
+      if(empty($age)){
+        echo "invalid number";
+      } else{
+        echo "<p>{$age}</p>" . "\n";
+      }
+      echo "<p>{$email}</p>" . "\n";
+    }
+  ?>
 </body>
 </html>
-
-<?php 
-  if(isset($_POST['submit'])){
-   if(isset($_POST['foods']) && !empty($_POST["foods"])){
-    $foods = $_POST['foods'];
-    foreach($foods as $food){
-      echo $food. "<br/>";
-   }
-  }else {
-    echo "select at least one";
-  }
-}
-?>
