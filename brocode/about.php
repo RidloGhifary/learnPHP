@@ -7,7 +7,7 @@
 </head>
 <body>
   <?php include("header.html") ?>
-  <p>this is a home page <br/> stuff about home page can go here</p>
+  <p>this is a about page <br/> stuff about about page can go here</p>
   <?php include("footer.html") ?>
 </body>
 </html>
