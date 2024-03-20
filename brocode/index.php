@@ -15,15 +15,15 @@
   <?php 
     if(isset($_POST['login'])){
       $username = filter_var($_POST['username'], FILTER_SANITIZE_SPECIAL_CHARS);
-      $age = filter_input(INPUT_POST, "age", FILTER_SANITIZE_NUMBER_INT);
-      $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-      echo "<p>{$username}</p>" . "\n";
-      if(empty($age)){
-        echo "invalid number";
+      $age = filter_input(INPUT_POST, "age", FILTER_VALIDATE_INT);
+      $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+      if(empty($email) || empty($age) || empty($username)){
+        echo "please fill the input correctly";
       } else{
+        echo "<p>{$username}</p>" . "\n";
         echo "<p>{$age}</p>" . "\n";
+        echo "<p>{$email}</p>" . "\n";
       }
-      echo "<p>{$email}</p>" . "\n";
     }
   ?>
 </body>
