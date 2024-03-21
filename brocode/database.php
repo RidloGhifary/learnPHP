@@ -12,9 +12,7 @@
     echo "failed to connect"."<br/>";
   }
   
-  if($conn) {
-    echo "connected to database"."<br/>";
-  } else{
+  if(!$conn) {
     echo "failed to connect"."<br/>";
   }
 
