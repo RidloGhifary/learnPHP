@@ -24,6 +24,7 @@ include("./database.php");
 </html>
 
 <?php
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -42,7 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       mysqli_stmt_bind_param($stmt, "ss", $username, $pass_hash);
 
       if (mysqli_stmt_execute($stmt)) {
-        echo "Welcome, registration successful!";
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $pass_hash;
+        header("Location: ./profile.php");
+        exit();
       } else {
         echo "Error: " . mysqli_error($connection);
       }
