@@ -23,12 +23,14 @@ if (empty($_SESSION['username'])) {
 <body>
   <h1>Welcome <?= $_SESSION['username']; ?></h1>
 
-  <?php
-  echo "<h1>name : {$_SESSION['username']}</h1>";
-  echo "<h1>id : {$_SESSION['user_id']}</h1>";
-  ?>
+  <ul>
+    <li>Username : <?= $_SESSION['username'] ?></li>
+    <li>User id : <?= $_SESSION['user_id'] ?></li>
+  </ul>
 
   <a href="./update.php">update your profile</a>
+  <br />
+  <br />
 
   <form method="post">
     <input type="submit" name="logout" value="logout">
