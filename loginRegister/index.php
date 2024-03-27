@@ -1,5 +1,15 @@
 <?php
+
+session_start();
 include("./database.php");
+
+if (!empty($_SESSION["username"])) {
+  echo "user with name " . $_SESSION["username"] . " is already login.";
+  header('Location: profile.php');
+  exit();
+} else {
+  echo "user hasn`t login yet.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,19 +22,21 @@ include("./database.php");
 </head>
 
 <body>
+  <h1>Register Page</h1>
+
   <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <label for="username">username : </label><br />
     <input type="text" name="username" /><br />
     <label for="password">password : </label><br />
-    <input type="text" name="password" /><br />
+    <input type="password" name="password" /><br />
     <input type="submit" name="register" value="Register"><br />
+    already have an account? <a href="./login.php">login!</a>
   </form>
 </body>
 
 </html>
 
 <?php
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -43,9 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       mysqli_stmt_bind_param($stmt, "ss", $username, $pass_hash);
 
       if (mysqli_stmt_execute($stmt)) {
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $pass_hash;
-        header("Location: ./profile.php");
+        header("Location: ./login.php");
         exit();
       } else {
         echo "Error: " . mysqli_error($connection);
