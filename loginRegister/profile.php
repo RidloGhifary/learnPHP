@@ -6,7 +6,11 @@ if (isset($_POST['logout'])) {
 }
 
 if (empty($_SESSION['username'])) {
-  header('Location: index.php');
+  if ($_SESSION['prev_page']) {
+    header('Location: ' . $_SESSION['prev_page']);
+  } else {
+    header('Location: index.php');
+  }
   exit();
 }
 ?>

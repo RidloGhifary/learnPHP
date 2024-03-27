@@ -2,6 +2,7 @@
 
 session_start();
 include("./database.php");
+$_SESSION['prev_page']  = $_SERVER['REQUEST_URI'];
 
 if (!empty($_SESSION["username"])) {
   echo "user with name " . $_SESSION["username"] . " is already login.";

@@ -2,6 +2,7 @@
 
 session_start();
 include("./database.php");
+$_SESSION['prev_page']  = $_SERVER['REQUEST_URI'];
 
 if (!empty($_SESSION["username"])) {
   header('Location: profile.php');
